@@ -31,19 +31,48 @@ namespace ScreenOverlay
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.myTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // label1
+            // myTimer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Coral;
-            this.label1.Location = new System.Drawing.Point(1450, 539);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(793, 95);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "HELLO I AM LABEL";
+            this.myTimer.Enabled = true;
+            this.myTimer.Interval = 1;
+            this.myTimer.Tick += new System.EventHandler(this.loop);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(3746, 528);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(64, 757);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(12, 528);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(64, 757);
+            this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Turquoise;
+            this.panel3.Location = new System.Drawing.Point(1465, 880);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(55, 55);
+            this.panel3.TabIndex = 2;
+            //
+            // own stuff
+            //
+            ball = new PongBall(this.panel3, this.panel3.Width, this.panel3.Height);
             // 
             // Form1
             // 
@@ -51,33 +80,32 @@ namespace ScreenOverlay
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(3822, 2113);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.LimeGreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
-            Timer myTimer = new Timer();
-            myTimer.Interval = 1;
-            myTimer.Tick += new EventHandler(loop);
-            myTimer.Start();
-
             this.ResumeLayout(false);
-            this.PerformLayout();
+
         }
         #endregion
 
         private void loop(object sender, EventArgs e)
         {
-            int x = Cursor.Position.X;
             int y = Cursor.Position.Y;
-
-            this.label1.Location = new System.Drawing.Point(x,y);
+            this.panel1.Location = new System.Drawing.Point(this.panel1.Location.X, y-(this.panel1.Height/2));
+            this.ball.moveTick();
+            this.Refresh();
         }
 
-        private System.Windows.Forms.Label label1;
+        private Timer myTimer;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private PongBall ball;
     }
 }
 
