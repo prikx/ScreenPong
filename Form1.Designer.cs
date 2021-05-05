@@ -60,7 +60,7 @@ namespace ScreenOverlay
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
             Timer myTimer = new Timer();
-            myTimer.Interval = 1000;
+            myTimer.Interval = 1;
             myTimer.Tick += new EventHandler(loop);
             myTimer.Start();
 
