@@ -16,6 +16,7 @@ namespace ScreenOverlay
         public Form1()
         {
             InitializeComponent();
+            startup();
             this.TopMost = true;
         }
 

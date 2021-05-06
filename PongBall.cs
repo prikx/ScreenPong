@@ -10,15 +10,15 @@ namespace ScreenOverlay
 {
     class PongBall
     {
-        Panel ballPanel;
+        private Panel ballPanel;
         int xSpeed;
         int ySpeed;
         
         public PongBall(Panel ballPanel, int width, int height)
         {
             this.ballPanel = ballPanel;
-            this.xSpeed = 1;
-            this.ySpeed = 1;
+            this.xSpeed = 8;
+            this.ySpeed = 8;
         }
 
         public void moveTick()
@@ -37,6 +37,11 @@ namespace ScreenOverlay
         public void onPaddleCollision()
         {
             this.xSpeed = this.xSpeed * (-1);
+        }
+
+        public Panel getBallPanel()
+        {
+            return this.ballPanel;
         }
     }
 }
