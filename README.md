@@ -5,5 +5,5 @@
 * ~~Controle paddle with the y-coordinate of the mouse~~
 * ~~Add a ball~~
 * Implement ball physics (WIP)
-* Implement collision physics
+* Implement collision physics (WIP)
 * Implement opponent Ai
