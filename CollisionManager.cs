@@ -44,19 +44,23 @@ namespace ScreenOverlay
 
         public bool wallCollisionCheck(PongBall ball)
         {
-            bool collided = false;
             Rectangle ballBounds = ball.getBallPanel().Bounds;
             if (ballBounds.Top < this.upperBounds || ballBounds.Bottom > this.lowerBounds)
             {
                 ball.onWallCollision();
-                collided = true;
+                return true;
             }
+            return false;
+        }
+
+        public bool winCheck(PongBall ball)
+        {
+            Rectangle ballBounds = ball.getBallPanel().Bounds;
             if (ballBounds.Right > this.rightBounds || ballBounds.Left < this.leftBounds)
             {
-                collided = true;
+                return true;
             }
-
-            return collided;
+            return false;
         }
     }
 }

@@ -30,6 +30,12 @@ namespace ScreenOverlay
 
         }
 
+        private void restartGame()
+        {
+            this.Controls.Clear();
+            this.InitializeComponent();
+        }
+
         [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
         static extern int GetWindowLong(IntPtr hWnd, int nIndex);
         [System.Runtime.InteropServices.DllImport("user32.dll")]

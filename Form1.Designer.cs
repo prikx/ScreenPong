@@ -92,7 +92,7 @@ namespace ScreenOverlay
 
         private void startup()
         {
-            this.ball = new PongBall(pBall, pBall.Width, pBall.Height);
+            this.ball = new PongBall(pBall);
 
             List<Rectangle> objects = new List<Rectangle>();
             objects.Add(PaddleLeft.Bounds);
@@ -109,7 +109,17 @@ namespace ScreenOverlay
             this.ball.moveTick();
             coll.wallCollisionCheck(this.ball);
             coll.objectCollisionCheck(this.ball);
+            if (coll.winCheck(this.ball))
+            {
+                resetGame();
+            }
             this.Refresh();
+        }
+
+        private void resetGame()
+        {
+            Point ogBallLoc = new Point(ball.OriginalX, ball.OriginalY);
+            ball.getBallPanel().Location = ogBallLoc;
         }
 
         private Timer myTimer;

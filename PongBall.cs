@@ -11,12 +11,19 @@ namespace ScreenOverlay
     class PongBall
     {
         private Panel ballPanel;
+        private int originalX;
+        private int originalY;
         int xSpeed;
         int ySpeed;
-        
-        public PongBall(Panel ballPanel, int width, int height)
+
+        public int OriginalX { get => originalX; set => originalX = value; }
+        public int OriginalY { get => originalY; set => originalY = value; }
+
+        public PongBall(Panel ballPanel)
         {
             this.ballPanel = ballPanel;
+            this.originalX = ballPanel.Location.X;
+            this.originalY = ballPanel.Location.Y;
             this.xSpeed = 8;
             this.ySpeed = 8;
         }
