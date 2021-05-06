@@ -6,4 +6,4 @@
 * ~~Add a ball~~
 * Implement ball physics (WIP)
 * Implement collision physics (WIP)
-* Implement opponent Ai
+* Implement opponent "Ai"
